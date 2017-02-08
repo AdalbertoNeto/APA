@@ -1,26 +1,30 @@
 //www.sourcetricks.com
+//Algoritmo de ordenação em tempo linear
+//Análise e projeto de algoritmos 2016.2
+//Adalberto 11228217
+
 #include <iostream>
 #include <fstream>
 
 using namespace std;
 
 //const int INPUT_SIZE = 20;
-const int BUCKET_K = 10000;
+const int BUCKET_K = 10000; //limite de valor inteiro possível
 
-void MostraVetor(int *vetor, int n){
+void MostraVetor(int *vetor, int n){ //função para mostrar o vetor
     for(int i =0; i< n; i++)
         cout << vetor[i] << " " << endl;
 }
 
 void countingsort(int* vetor, int n){
-    int CountVetor[BUCKET_K] = { 0 };
+    int CountVetor[BUCKET_K] = { 0 }; //inicializa o vetor contador
 
     for(int i=0; i<n; i++){
         CountVetor[vetor[i]]++;
     }
 
     int outputIndex = 0;
-    for(int j=0; j<BUCKET_K; j++){
+    for(int j=0; j<BUCKET_K; j++){ //laço para contar os index
         while(CountVetor[j]--)
             vetor[outputIndex++] = j;
     }

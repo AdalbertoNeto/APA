@@ -1,4 +1,7 @@
 //www.sanfoundry.com
+//Algoritmo de ordenação em tempo linear
+//Análise e projeto de algoritmos 2016.2
+//Adalberto 11228217
 #include <iostream>
 #include <fstream>
 
@@ -6,17 +9,17 @@ using namespace std;
 
 void bucketsort(int vetor[], int n){
 
-    int range = 10000;
-    int buckets[range];
+    int range = 10000; //Limite de valores contido no exemplo
+    int buckets[range];//cria o bucket
 
-    for(int i=0; i<range; ++i){
+    for(int i=0; i<range; ++i){ //inicializa o bucket todos iguais a 0
         buckets[i] = 0;
     }
 
-    for(int i=0; i<n; ++i)
+    for(int i=0; i<n; ++i) //Incrementa quantas vezes cada elemento está presente no vetor.
         ++buckets[vetor[i]];
 
-    for(int i=0,j =0; j<range; ++j)
+    for(int i=0,j =0; j<range; ++j)//Ordema utilizando o  InsertionSort
         for(int k = buckets[j]; k>0; --k)
             vetor[i++] = j;
 }
