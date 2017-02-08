@@ -4,7 +4,7 @@
 using namespace std;
 
 int getMax(int vetor[], int n){
-    int mx = vetor[];
+    int mx = vetor[0];
     for(int i =1; i<n; i++)
         if(vetor[i] > mx)
             mx = vetor[i];
@@ -34,12 +34,12 @@ void radixsort(int vetor[], int n){
     int m = getMax(vetor, n);
 
     for(int exp = 1; m/exp >0; exp *=10)
-        counSort(vetor, n , exp);
+        countSort(vetor, n , exp);
 }
 
 void mostraVetor(int vetor[], int n){
     for(int i =0; i<n; i++)
-        count << vetor[i] << " "<<endl;
+        cout << vetor[i] << " "<<endl;
 }
 
 int main(){
