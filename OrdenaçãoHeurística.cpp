@@ -44,10 +44,10 @@ void countSort(int vetor[], int n, int exp){ //Função que conta o vetor de acord
         vetor[i] = output[i];
 }
 
-void radixsort(int vetor[], int n){
-    int m = getMax(vetor, n); //Procura o maior valor para saber o número de dígitos
+void radixsort(int vetor[], int n, int maximo){
+    //int m = getMax(vetor, n); //Procura o maior valor para saber o número de dígitos
 
-    for(int exp = 1; m/exp >0; exp *=10)//Contar para cada dígito.
+    for(int exp = 1; maximo/exp >0; exp *=10)//Contar para cada dígito.
         countSort(vetor, n , exp);
 }
 
@@ -88,3 +88,31 @@ void quickSort(int vetor[], int low, int high){
     }
 }
 
+int main(){
+
+    ifstream file("example.in");
+    if(!file){/* Falhou em abrir o arquivo */}
+
+    int tamanho;
+    if(!(file >> tamanho)){/*Falhou em ler o primeiro valor */}
+
+    int* vetor = new int[tamanho];
+    for(int i=0; i<tamanho; ++i){
+        if(!(file>>vetor[i])){/*Falhou em ler um dos valores */}
+    }
+
+    int maximo;
+    maximo = getMax(vetor, tamanho);
+
+    if(maximo<= 100000)
+        radixsort(vetor, tamanho, maximo);
+    else{
+        if(tamanho <= 50)
+            insertionSort(vetor, tamanho);
+        else
+            quickSort(vetor, 0 , tamanho-1);
+    }
+    mostraVetor(vetor, tamanho);
+
+    return 0;
+}
