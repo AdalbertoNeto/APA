@@ -1,3 +1,4 @@
+//Heurística para escolha de algoritmos de ordenação
 #include<iostream>
 #include<fstream>
 #include<stdio.h>
@@ -104,13 +105,17 @@ int main(){
     int maximo;
     maximo = getMax(vetor, tamanho);
 
-    if(maximo<= 100000)
+    if(maximo<= 100000){
+        printf("Ordenando com o Radix: \n");
         radixsort(vetor, tamanho, maximo);
-    else{
-        if(tamanho <= 50)
+    }else{
+        if(tamanho <= 50){
+            printf("Ordenando com o Insertion: \n");
             insertionSort(vetor, tamanho);
-        else
+        }else{
+            printf("Ordenando com o Quick: \n");
             quickSort(vetor, 0 , tamanho-1);
+        }
     }
     mostraVetor(vetor, tamanho);
 
